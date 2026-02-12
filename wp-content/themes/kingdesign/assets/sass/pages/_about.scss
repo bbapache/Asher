@@ -1,0 +1,184 @@
+.page-about {
+    .full-height {
+        padding: 0 !important;
+
+        @media (min-width: $min-tablet) {
+            min-height: calc( var(--app-height) - var(--header-height) - var(--footer-height) );
+            height: 0;
+            flex-direction: row;
+        }
+    }
+
+    .content-wrapper {
+        position: relative;
+
+        .wp-block-image {
+            height: 100%;
+        }
+
+        .title-block {
+            margin-bottom: -0.8rem !important;
+
+            h1,
+            h2,
+            h3 {
+                background: var(--wp--preset--color--light-gray);
+            }
+        }
+
+        .text-wrapper {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            padding: 1rem 1rem;
+            flex-direction: column;
+            position: relative;
+
+            .inner-wrapper:first-of-type {
+                margin-bottom: -1rem;
+            }
+
+            .inner-wrapper {
+                position: relative;
+                z-index: 0;
+            }
+        }
+
+        img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;
+        }
+
+        h2 {
+            line-height: 1;
+        }
+
+        p {
+            margin-bottom: 1rem !important;
+            font-size: 0.9375rem;
+            line-height: 1.5;
+        }
+
+        .wp-block-column:first-of-type {
+            //width: calc(100% - $spacingSmall);
+            width: 100%;
+            height: auto;
+            //aspect-ratio: 1.32;
+            border: $gapHalvedSmall solid white;
+        }
+
+        @media (min-width: $min-tablet) {
+            .wp-block-column:first-of-type {
+                width: calc(100% - $spacing);
+                border: $gapHalved solid white;
+            }
+
+            .text-wrapper {
+                padding: 2vh 3vw;
+                overflow-y: auto;
+            }
+
+            .wp-block-column:first-of-type {
+                padding-bottom: 0;
+            }
+        }
+
+        @media (max-width: 1800px)  {
+            .text-wrapper {
+                display: block;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 40%;
+                height: 15rem;
+                background: linear-gradient(to bottom,  rgba(224,226,225,0) 0%,rgba(224,226,225,1) 85%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00e0e2e1', endColorstr='#e0e2e1',GradientType=0 );
+                pointer-events: none;
+            }
+
+            .text-wrapper {
+                overflow-y: scroll;
+
+                .inner-wrapper:nth-of-type(2) {
+                    margin-bottom: 9rem;
+                }
+            }
+        }
+
+        @media (max-width: $max-tablet) {
+            &::after {
+                content: none;
+            }
+
+            .text-wrapper {
+                .inner-wrapper:nth-of-type(2) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .collage {
+        gap: 0 !important;
+        margin: 0;
+
+        .wp-block-image {
+            margin: 0 !important;
+            height: 50%;
+            border: $gapHalvedSmall solid white;
+            padding-bottom: 36%;
+            width: auto !important;
+
+            @media (min-height: 1000px) {
+                padding-bottom: 30%;
+            }
+
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                flex-basis: 55%;
+            }
+            &:nth-of-type(1),
+            &:nth-of-type(4) {
+                flex-basis: 45%;
+            }
+
+            &:nth-of-type(1) img {
+                object-position: left;
+            }
+
+            &:nth-of-type(3) img {
+                object-position: 50% 20%;
+            }
+
+            &:nth-of-type(2),
+            &:nth-of-type(4) {
+                img {
+                    object-position: top;
+                }
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            @media (min-width: $min-tablet) {
+                border: $gapHalved solid white;
+            }
+        }
+
+        @media (min-width: $min-tablet){
+            height: 100%;
+            
+            .wp-block-image {
+                padding-bottom: initial;
+            }
+        }
+    }
+}

@@ -1,0 +1,288 @@
+.page-homepage {
+    @keyframes fade-in {
+        0% {
+            opacity:0;
+        }
+        100% {
+            opacity:1;
+        }
+    }
+
+    #header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+        height: 100px;
+        border-bottom: 0;
+
+        [id^="modal-"]:not([id$="-content"]){
+            background: var(--wp--preset--color--primary);
+        }
+
+        .wp-block-navigation__responsive-container-open {
+            background: transparent !important;
+        }
+
+        .homepage-logo {
+            max-width: 12rem;
+
+            img {
+                max-height: 23vh;
+            }
+
+            &.fadeIn {
+                animation:fade-in 1s ease-out 6s both;
+            }
+        }
+
+        .alignwide {
+            align-items: flex-start;
+        }
+
+        @media (min-width: 600px) {
+            .homepage-logo {
+                max-width: 20rem;
+            }
+        }
+
+        @media (min-width: 700px) {
+            height: 170px;
+        }
+    }
+
+    .full-height {
+        flex: 1;
+    }
+
+    .entry-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #hero-wrapper {
+        position: relative;
+        //height: 100vh;
+        height: var(--app-height);
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            background: rgb(17,17,17);
+            background: linear-gradient(180deg,rgba(17,17,17,.4) 0,rgba(17,17,17,0) 50%); 
+            z-index: 9;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        &.mobile,
+        &.tablet {
+            display: none;
+        }
+
+        @media (orientation: portrait) {
+            &.desktop,
+            &.tablet {
+                display: none;
+            }
+
+            &.mobile {
+                display: block;
+            }
+        }
+
+        @media (orientation: portrait) and (min-width: 800px){
+            &.desktop,
+            &.mobile {
+                display: none;
+            }
+
+            &.tablet {
+                display: block;
+            }
+        }
+
+        @media (min-width: 1000px) {
+            &::before {
+                height: 80%;
+            }
+        }
+    }
+
+    #homes {
+        flex: 0 1 auto;
+    }
+
+    .hero-slider {
+        //height: 100%;
+        height: var(--app-height);
+        z-index: 0;
+
+        .slick-list {
+            height: var(--app-height);
+
+            .slick-track {
+                height: var(--app-height);
+            }
+
+            .slick-slide {
+                height: var(--app-height);
+
+                img {
+                    height: var(--app-height);
+                }
+            }
+        }
+
+        // @media (max-width: $max-tablet) and (orientation: portrait) {
+        //     .slick-slide[data-slick-index="0"] img {
+        //         object-position: 79% 50% !important;
+        //     }
+        
+        //     .slick-slide[data-slick-index="1"] img {
+        //         object-position: 43% 50%;
+        //     }
+        
+        //     .slick-slide[data-slick-index="2"] img {
+        //         object-position: 30% 50%;
+        //     }
+        
+        //     .slick-slide[data-slick-index="3"] img {
+        //         object-position: 40% 50%;
+        //     }
+        
+        //     .slick-slide[data-slick-index="4"] img {
+        //         object-position: 93% 50%;
+        //     }
+        
+        //     .slick-slide[data-slick-index="5"] img {
+        //         object-position: 87% 50%;
+        //     }
+        // }
+    }
+
+    .fifty-fifty-block {
+        max-width: 82rem;
+        padding: 1rem 2rem;
+
+        h1 {
+            max-width: 32rem;
+            margin: 0 auto;
+
+            @media (max-width: $max-tablet) {
+                letter-spacing: 2px;
+                text-align: center;
+            }
+        }
+
+        .wp-block-column:first-of-type {
+            border-color: transparent;
+            padding: 0;
+        }
+
+        .wp-block-column:nth-of-type(2) {
+            display: none;
+        }
+    }
+
+    .page-link-blocks {
+            display: none;
+        }
+
+    #footer {
+        &.mobile {
+            padding: 0.7rem 0.6rem 0;
+        }
+
+        &.desktop {
+            display: none;
+        }
+
+        .social-icons {
+            display: flex;
+            width: 7rem;
+        }
+
+        h2 {
+            line-height: 1;
+        }
+    }
+
+    @media (max-width: $max-tablet) {
+        .down-arrow:hover {
+            border-color: transparent;
+        }
+
+        .down-arrow a.clicked {
+            opacity: 0 !important;
+        }
+    }
+
+    @media (min-width: $min-tablet) {
+        .entry-content {
+            height: auto;
+        }
+        .down-arrow {
+            display: flex;
+        }
+
+        .page-link-blocks {
+            display: flex;
+        }
+
+        .fifty-fifty-block {
+            .wp-block-column:first-of-type {
+                border-color: var(--wp--preset--color--dark-gray);
+                padding: 0 0 1rem;
+            }
+
+            .wp-block-column:nth-of-type(2) {
+                display: block;
+            }
+        }
+
+        // #hero-wrapper {
+        //     height: 100vh;
+        //     max-height: -webkit-fill-available;
+        // }
+
+        #footer {
+            &.desktop {
+                display: flex;
+            }
+
+            &.mobile {
+                display: none;
+            }
+
+            .social-icons {
+                width: 9rem;
+            }
+        }
+    
+        #homes {
+            height: calc(var(--app-height) - $footer-height-desktop);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fifty-fifty-block {
+            flex: 0 1 auto;
+        }
+
+        .page-link-blocks {
+            flex: 1 1 auto;
+
+            .wp-block-column,
+            .page-link-block,
+            .wp-block-media-text__media,
+            .wp-block-media-text__media img {
+                height: 100%;
+            }
+        }
+    }
+}

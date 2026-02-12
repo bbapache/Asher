@@ -1,0 +1,21 @@
+.down-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 0.5rem;
+    z-index: 9;
+    width: 3rem;
+    height: 3rem;
+	border: 1px solid transparent;
+	border-radius: 50%;
+	opacity: 1 !important;
+	transition: .2s ease-out !important;
+
+	&:hover {
+		border-color: var(--wp--preset--color--white);
+	}
+}

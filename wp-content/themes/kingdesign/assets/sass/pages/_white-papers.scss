@@ -1,0 +1,14 @@
+.single-white_papers {
+    .wp-block-file {
+        padding-bottom: 1rem;
+        text-align: center;
+    }
+
+    .wp-block-file__embed {
+        min-height: calc(var(--app-height) - 229px);
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+}

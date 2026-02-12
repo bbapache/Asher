@@ -1,0 +1,39 @@
+.wp-block-pullquote {
+    padding: 2rem 1rem 3rem;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+
+    blockquote {
+        max-width: 60rem;
+        margin: 0 auto; 
+        max-width: none;
+        text-align: center;
+    }
+
+    p {
+        margin: 0;
+        font-family: var(--wp--preset--font-family--neutra-2);
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+
+    cite {
+        margin: 0.5rem 0 0 ;
+        font-family: var(--wp--preset--font-family--neutra-2);
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        font-style: normal;
+        float: right;
+    }
+
+    @media (min-width: $min-tablet) {
+        padding: 3rem 1rem 3.2rem;
+
+        p {
+            font-size: 1rem;
+        }
+    }
+}

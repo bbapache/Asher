@@ -1,0 +1,242 @@
+@mixin reset-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@mixin reset-button {
+	background: none;
+	border: none;
+}
+
+@mixin radial-gradient {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: radial-gradient(46.63% 46.63% at 50% 50%, #0C8FBE 0%, rgba(12, 143, 190, 0.55531) 32.83%, rgba(12, 143, 190, 0) 100%);
+	opacity: 0.3;
+	z-index: -1;
+	pointer-events: none;
+}
+
+@mixin paint-brush {
+	position: relative;
+
+	&::before {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 100%;
+		background-image: url('../images/global/paint-swipe-1.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+	}
+}
+
+@mixin floating-border {
+	position: relative;
+
+	&::after {
+		content: '';
+		display: block;
+		width: calc(100% + 15px);
+		height: calc(100% + 20px);
+		border: 10px solid $color-black;
+		opacity: 0.15;
+		pointer-events: none;
+		position: absolute;
+		top: -5px;
+		left: -15px;
+		z-index: -1;
+	}
+}
+
+@mixin image-frill {
+	display: inline-block;
+	padding: 0 10px 10px 0;
+	position: relative;
+
+	&::before {
+		content: '';
+		display: block;
+		max-width: 500px;
+		max-height: 555px;
+		width: 88%;
+    	height: 80%;
+		background-color: $color-accent;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		z-index: 0;
+	}
+
+	img {
+		display: block;
+		position: relative;
+	}
+}
+
+@mixin yellow-sides {
+	&::before,
+	&::after {
+		@media (min-width: $max-site-width) {
+			content: '';
+			display: block;
+			width: calc((100vw - 1440px) / 2);
+			height: 100%;
+			background-color: $color-primary;
+			position: absolute;
+			top: 0;
+			left: calc((100vw - 1440px) / -2);
+		}
+	}
+
+	&::after {
+		@media (min-width: $max-site-width) {
+			left: auto;
+			right: calc((100vw - 1440px) / -2);
+		}
+	}
+}
+
+@mixin animate-basic-setup( $delay: 0s, $y: 20px ) {
+		transform: translateY( $y );
+		opacity: 0;
+		transition: transform 1s, opacity 1s;
+		transition-delay: $delay;
+}
+
+@mixin animate-basic {
+	transform: translateY(0);
+	opacity: 1;
+}
+
+@mixin animate-basic-x-setup( $delay: 0s, $x: 10% ) {
+		transform: translateX( $x );
+		opacity: 0;
+		transition: transform 1s, opacity 1s;
+		transition-delay: $delay;
+}
+
+@mixin animate-basic-x {
+	transform: translateX(0);
+	opacity: 1;
+}
+
+@mixin animate-border-bottom( $border-size: 3px ) {
+	position: relative;
+
+	&::after {
+		content: '';
+		display: block;
+		height: $border-size;
+		width: 100%;
+		background-color: $color-white;
+		position: absolute;
+		bottom: -#{$border-size};
+		left: 0;
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 1s ease;
+	}
+
+	&.animate-bottom {
+		&::after {
+			transform: scaleX(100%);
+		}
+	}
+}
+
+@mixin animate-border-top( $border-size: 3px ) {
+	position: relative;
+
+	&::before {
+		content: '';
+		display: block;
+		height: $border-size;
+		width: 100%;
+		background-color: $color-white;
+		position: absolute;
+		top: -#{$border-size};
+		left: 0;
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 1s ease;
+	}
+
+	&.animate-top {
+		&::before {
+			transform: scaleX(100%);
+		}
+	}
+}
+
+@mixin screen-reader {
+	position: absolute !important;
+	clip: rect(1px, 1px, 1px, 1px);
+	padding: 0 !important;
+	border: 0 !important;
+	height: 1px !important;
+	width: 1px !important;
+	overflow: hidden;
+	margin: 0 !important;
+}
+
+// This mixin can be used to set the object-fit:
+// @include object-fit(contain);
+// or object-fit and object-position:
+// @include object-fit(cover, top);
+@mixin object-fit($fit: fill, $position: null) {
+	object-fit: $fit;
+	@if $position {
+		object-position: $position;
+		font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+	} @else {
+		font-family: 'object-fit: #{$fit}';
+	}
+}
+
+
+
+// fluid type - control the rate at which fluid type scales http://www.sassmeister.com/gist/7f22e44ace49b5124eec
+@mixin fluid-scale($properties, $min-vw, $max-vw, $min-value, $max-value) {
+	& {
+		@each $property in $properties {
+			#{$property}: $min-value;
+		}
+
+		@media screen and (min-width: $min-vw) {
+			@each $property in $properties {
+				#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+			}
+		}
+
+		@media screen and (min-width: $max-vw) {
+			@each $property in $properties {
+				#{$property}: $max-value;
+			}
+		}
+	}
+}
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+
+@mixin fadeUpAnimation {
+	opacity: 1;
+	transform: translate3d(0, 0, 0);
+}
+
+@mixin fadeUpAnimation_setup {
+	opacity: 0;
+	transform: translate3d(0, 20px, 0);
+	transition: all 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+}

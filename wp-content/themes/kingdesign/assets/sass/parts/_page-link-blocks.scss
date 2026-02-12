@@ -1,0 +1,116 @@
+.page-link-blocks {
+    overflow: hidden;
+    margin: $gapHalvedSmall !important;
+    padding: 0;
+
+    @media (min-width: $min-tablet) {
+        margin: $gapHalved !important;
+    }
+
+    .page-link-block {
+        display: block;
+        position: relative;
+        border: $gapHalvedSmall solid white;
+        
+        a {
+            display: block;
+            height: 100%;
+
+            &:active {
+                color: transparent;
+            }
+        }
+
+        .wp-block-media-text__media {
+            width: 100%;
+            height: 100%;
+            transition: background 1s;
+        }
+
+        .wp-block-media-text__content {
+            padding: 0.5rem;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transition: 0.2s ease-out;
+            pointer-events: none;
+            opacity: 1;
+            background: rgba(84, 96, 114, 0.9);
+        }
+
+        .wp-block-media-text__content p {
+            margin: 0 auto;
+            font-size: var(--wp--preset--font-size--medium);
+            letter-spacing: 5px;
+            text-indent: 5px;
+            line-height: 1.2;
+        }
+
+        .wp-block-media-text__content .wp-block-image {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .wp-block-media-text__content img {
+            border-radius: 50%;
+            border: 1px solid transparent;
+            transition: 0.2s ease-out;
+            padding: 9px;
+            width: 2rem;
+            height: 2rem;
+            margin: 0 auto;
+            pointer-events: all;
+            cursor: pointer;
+            display: none;
+
+            @media (min-width: $header-bp) {
+                border: 1px solid transparent;
+
+                &:hover {
+                    border: 1px solid white;
+                }
+            }
+        }
+
+        .wp-block-media-text__media img {
+            //@include hoverOpacity;
+            object-fit: cover;
+        }
+
+        &:hover {
+            .wp-block-media-text__media {
+                background-color: var(--wp--preset--color--primary);
+                transition: background 0s;
+            }
+
+            .wp-block-media-text__media img {
+                @include hoverOpacity;
+            }
+
+            .wp-block-media-text__content {
+                opacity: 1;
+            }
+        }
+
+        @media (min-width: $min-tablet) {
+            border: $gapHalved solid white;
+            background: none !important;
+
+            .wp-block-media-text__content {
+                opacity: 0;
+                bottom: initial;
+                top: 50%;
+                background: transparent;
+            }
+
+            .wp-block-media-text__content img {
+                display: block;
+            }
+
+            .wp-block-media-text__media {
+                background-color: white;
+            }
+        }
+    }
+}

@@ -1,0 +1,116 @@
+$footer-bp: 550px;
+$footer-height-desktop: 64px;
+$footer-height-mobile: 40px;
+
+:root {
+    --footer-height: $footer-height-desktop;
+}
+
+#footer {
+    padding: .5rem 0.4rem 0 0.4rem;
+    height: $footer-height-mobile;
+    position: relative;
+
+    a {
+        text-decoration: none;
+    }
+
+    .up-arrow,
+    .back-arrow {
+        width: 2rem;
+        height: 1rem;
+        border-radius: 50%;
+        border: 1px solid transparent;
+        transition: 0.2s ease-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            display: flex;
+        }
+
+        @media (min-width: 769px) {
+            height: 2rem;
+
+            &:hover {
+                border: 1px solid white;
+            }
+        }
+    }
+
+    .up-arrow {
+        transform: rotate(180deg);
+
+        &.disabled {
+            pointer-events: none;
+            opacity: 0;
+        }
+    }
+
+    .back-arrow {
+        margin-right: 0.75rem;
+        transform: rotate(90deg);
+    }
+
+    .custom-logo {
+        max-width: 3rem;
+    }
+
+    .alignwide {
+        max-width: 100% !important;
+    }
+
+    .wp-block-site-logo {
+        margin: 0 0 0 auto;
+        text-align: center;
+        width: 4rem;
+        height: 1.5rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .custom-logo {
+        max-width: 5rem;
+    }
+
+    .custom-logo-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .social-icons {
+        display: none;
+    }
+
+    @media (min-width: $min-tablet) {
+        height: $footer-height-desktop;
+        padding: .5rem 1.9rem .5rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .social-icons {
+            display: flex;
+        }
+
+        .alignwide {
+            flex-direction: row;
+            width: 100%;
+        }
+
+        .wp-block-site-logo {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 6.5rem;
+            height: 3rem;
+        }
+    }
+}

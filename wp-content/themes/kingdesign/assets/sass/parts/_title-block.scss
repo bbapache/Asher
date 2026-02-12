@@ -1,0 +1,38 @@
+.title-block {
+    position: relative;
+    padding: 1.5rem 1rem;
+    width: 100%;
+    position: relative;
+
+    .wp-block-separator {
+        max-width: 100%;
+        margin: 0 auto;
+        z-index: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 2.1rem;
+        width: 90vw;
+    }
+
+    .wp-block-image {
+        opacity: 1 !important;
+        z-index: 2;
+    }
+
+    h1,
+    h2,
+    h3 {
+        background: white;
+        max-width: fit-content;
+        padding: 0 1rem;
+        z-index: 3;
+        line-height: 1;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .small {
+        font-size: var(--wp--preset--font-size--small);
+    }
+}

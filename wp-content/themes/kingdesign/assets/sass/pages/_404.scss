@@ -1,0 +1,17 @@
+.error404 {
+    .full-height {
+        @media (min-width: $header-bp) and (min-height: 700px){
+            height: calc(var(--app-height) - $header-height-desktop - $footer-height-desktop);
+        }
+    }
+
+    #footer {
+        .wp-block-group {
+            justify-content: flex-end;
+        }
+
+        .up-arrow {
+            display: none;
+        }
+    }
+}

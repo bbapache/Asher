@@ -1,0 +1,13 @@
+@mixin hoverOpacity {
+    opacity: 0.2;
+}
+
+$min-tablet: 1081px;
+$max-tablet: 1080px;
+
+$spacing: var(--wp--preset--spacing--grid-gap-rem);
+$spacingSmall: var(--wp--preset--spacing--grid-gap-rem-small);
+
+$gapHalved: calc(var(--wp--preset--spacing--grid-gap-rem) / 2);
+$gapHalvedSmall: calc(var(--wp--preset--spacing--grid-gap-rem-small) / 2);
+

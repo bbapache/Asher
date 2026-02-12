@@ -1,0 +1,56 @@
+* {
+	box-sizing: border-box;
+}
+
+html.has-modal-open {
+	overflow: visible;
+}
+
+html.no-scroll {
+	overflow: hidden;
+}
+
+.wp-site-blocks > * + * {
+	margin-block-start: 0;
+}
+
+body {
+	overflow-x: hidden;
+}
+body .is-layout-constrained > * + * {
+	margin-block-start: 0;
+}
+
+body .is-layout-flow > * + * {
+	margin-block-start: 0;
+}
+
+.full-height {
+	display: flex;
+	flex-direction: column;
+}
+
+.waiting-to-animate {
+    opacity: 0;
+    transition: opacity 1s;
+
+    &.animate {
+        opacity: 1;
+    }
+}
+
+a:where(:not(.wp-element-button)):focus {
+	text-decoration: underline;
+}
+
+a:focus {
+	text-decoration: none;
+}
+
+:root {
+	--app-height: 100%;
+ }
+
+ .disable-hover {
+	pointer-events: none;
+  }

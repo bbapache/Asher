@@ -1,0 +1,1 @@
+var animationSelectors = '.wp-block-post-content > *, .wp-block-post-content > * > *';

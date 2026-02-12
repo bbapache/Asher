@@ -1,0 +1,303 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+
+
+	"customTemplates": [
+		{
+			"name": "Single Project",
+			"postTypes": [
+				"post"
+			],
+			"title": "Blank Project"
+		},
+		{
+			"name": "404",
+			"postTypes": [
+				"page"
+			],
+			"title": "404"
+		}
+	],
+
+
+	"templateParts": [
+		{
+			"area": "header",
+			"name": "header",
+			"title": "Header"
+		},
+		{
+			"area": "footer",
+			"name": "footer",
+			"title": "Footer"
+		}
+	],
+
+
+	"settings": {
+		"appearanceTools": true,
+		"color": {
+			"palette": [
+				{
+					"color": "#516174",
+					"name": "Primary",
+					"slug": "primary"
+				},
+				{
+					"color": "#A4B6C4",
+					"name": "Secondary",
+					"slug": "secondary"
+				},
+				{
+					"color": "#A1978B",
+					"name": "Tertiary",
+					"slug": "Tertiary"
+				},
+				{
+					"color": "#ffffff",
+					"name": "White",
+					"slug": "white"
+				},
+				{
+					"color": "#E0E2E1",
+					"name": "Light Gray",
+					"slug": "light-gray"
+				},
+				{
+					"color": "#C9C7C5",
+					"name": "Gray",
+					"slug": "gray"
+				},
+				{
+					"color": "#989C9F",
+					"name": "Dark Gray",
+					"slug": "dark-gray"
+				},
+				{
+					"color": "#222222",
+					"name": "Black",
+					"slug": "black"
+				}
+			]
+		},
+		"layout": {
+			"contentSize": "650px",
+			"wideSize": "1300px"
+		},
+		"spacing": {
+			"spacingScale": {
+				"steps": 0
+			},
+			"spacingSizes": [
+				{
+					"size": "0.625rem",
+					"slug": "grid-gap-rem",
+					"name": "0.625rem"
+				},
+				{
+					"size": "0.3rem",
+					"slug": "grid-gap-rem-small",
+					"name": "0.3rem"
+				}
+			],
+			"units": [
+				"%",
+				"px",
+				"em",
+				"rem",
+				"vh",
+				"vw"
+			]
+		},
+		"typography": {
+			"dropCap": false,
+			"fluid": true,
+			"fontFamilies": [
+				{
+					"fontFace": [
+						{
+							"fontFamily": "Avenir45",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/Avenir45Book.woff2"
+							]
+						},
+						{
+							"fontFamily": "Avenir45",
+							"fontStretch": "normal",
+							"fontStyle": "italic",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/Avenir45BookOblique.woff2"
+							]
+						},
+						{
+							"fontFamily": "Avenir45",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "600",
+							"src": [
+								"file:./assets/fonts/Avenir85Heavy.woff2"
+							]
+						}
+					],
+					"fontFamily": "'Avenir', sans-serif",
+					"name": "Avenir",
+					"slug": "avenir"
+				},
+				{
+					"fontFace": [
+						{
+							"fontFamily": "neutra2",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "600",
+							"src": [
+								"file:./assets/fonts/Neutra2Display-Bold-Lining.woff2"
+							]
+						}
+					],
+					"fontFamily": "'neutra2', sans-serif",
+					"name": "neutra2",
+					"slug": "neutra2"
+				},
+				{
+					"fontFace": [
+						{
+							"fontFamily": "Univers",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "300",
+							"src": [
+								"file:./assets/fonts/Univers47LightCondensed.woff2"
+							]
+						}
+					],
+					"fontFamily": "'Univers', sans-serif",
+					"name": "Univers",
+					"slug": "univers"
+				},
+				{
+					"fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
+					"name": "System Font",
+					"slug": "system-font"
+				}
+			],
+			"fontSizes": [
+				{
+					"fluid": {
+						"min": "0.875rem",
+						"max": "1rem"
+					},
+					"size": "1rem",
+					"slug": "small"
+				},
+				{
+					"fluid": {
+						"min": "1rem",
+						"max": "1.5rem"
+					},
+					"size": "1.5rem",
+					"slug": "medium"
+				},
+				{
+					"fluid": {
+						"min": "1.3rem",
+						"max": "1.7rem"
+					},
+					"size": "1.7rem",
+					"slug": "large"
+				},
+				{
+					"fluid": {
+						"min": "2rem",
+						"max": "3rem"
+					},
+					"size": "3rem",
+					"slug": "x-large"
+				}
+			]
+		},
+		"useRootPaddingAwareAlignments": true
+	},
+
+
+	"styles": {
+		"blocks": {
+			"core/paragraph": {
+                "typography": {
+                    "fontSize":"var(--wp--preset--font-size--small)",
+					"fontFamily": "var(--wp--preset--font-family--avenir)",
+					"fontWeight": "300"
+                }
+            },
+			"core/heading": {
+                "typography": {
+                    "fontSize":"var(--wp--preset--font-size--medium)",
+					"fontFamily": "var(--wp--preset--font-family--neutra2)",
+					"letterSpacing": "4px",
+					"lineHeight": "1.5"
+                }
+            },
+			"core/gallery": {
+				"spacing": {
+					"padding": {
+						"top": "0",
+						"right": "var(--wp--preset--spacing--grid-gap-rem)",
+						"bottom": "var(--wp--preset--spacing--grid-gap-rem)",
+						"left": "var(--wp--preset--spacing--grid-gap-rem)"
+					}
+				}
+			}
+		},
+		"color": {
+			"background": "var(--wp--preset--color--white)",
+			"text": "var(--wp--preset--color--black)"
+		},
+		"elements": {
+			"link": {
+				"color": {
+					"text": "var(--wp--preset--color--contrast)"
+				},
+				":hover": {
+					"typography": {
+						"textDecoration": "none"
+					}
+				},
+				":focus": {
+					"typography": {
+						"textDecoration": "underline dashed"
+					}
+				},
+				":active": {
+					"color": {
+						"text": "var(--wp--preset--color--secondary)"
+					},
+					"typography": {
+						"textDecoration": "none"
+					}
+				},
+				"typography": {
+					"textDecoration": "underline"
+				}
+			}
+		},
+		"spacing": {
+			"blockGap": "0",
+			"padding": {
+				"top": "0",
+				"right": "0",
+				"bottom": "0",
+				"left": "0"
+			}
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--avenir)",
+			"fontSize": "var(--wp--preset--font-size--medium)",
+			"lineHeight": "1.6"
+		}
+	}
+}

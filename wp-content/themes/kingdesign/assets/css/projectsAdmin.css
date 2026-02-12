@@ -1,0 +1,42 @@
+.wp-block-gallery.project-gallery {
+	gap: 0 !important;
+	padding: 0 0.6rem;
+}
+
+.wp-block-gallery.project-gallery .blocks-gallery-grid {
+	gap: 0;
+	padding: 0;
+}
+
+.wp-block-gallery.project-gallery .wp-block-image {
+	gap: 0;
+	padding: 0;
+	width: 50% !important;
+	position: relative;
+	background: var(--wp--preset--color--primary);
+	padding-bottom: 32%;
+	border: 0.3rem solid white;
+	margin: 0 !important;
+	height: 0;
+    overflow: hidden;
+}
+
+.wp-block-gallery.project-gallery .wp-block-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.wp-block-gallery.project-gallery .wp-block-image a {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.wp-block-gallery.project-gallery .wp-block-image {
+    width: 25% !important;
+}
+
+.wp-block-gallery.project-gallery .wp-block-image:nth-child(9n+2), .project-gallery .wp-block-image:nth-child(9n+4), .project-gallery .wp-block-image:nth-child(9n+9) {
+    width: 50% !important;
+}

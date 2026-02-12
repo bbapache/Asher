@@ -1,0 +1,15 @@
+# Ignore everything in the root except the king-design theme, gruntfile.js and package.json
+/*
+*.DS_Store
+
+# track gitignore, gruntfile.js, and package.json
+!.gitignore
+!Gruntfile.js
+!package.json
+
+# track king-design theme
+!wp-content
+/wp-content/*
+!/wp-content/themes
+/wp-content/themes/*
+!/wp-content/themes/kingdesign

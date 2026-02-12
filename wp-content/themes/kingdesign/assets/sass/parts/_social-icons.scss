@@ -1,0 +1,36 @@
+.social-icons.is-layout-flex {
+    width: 9rem;
+    gap: 0 !important;
+    flex-wrap: nowrap;
+
+    .wp-block-image {
+        margin: 0;
+        width: 20% !important;
+        flex-basis: 100% !important;
+
+        img {
+            margin: 0 auto;
+            width: 1.2rem !important;
+            object-fit: contain;
+            max-height: 1rem;
+        }
+
+        a {
+            transition: 0.2s ease-out;
+            display: block;
+            height: 100%;
+
+            &:hover{
+                opacity: 0.5;
+            }
+        }
+    }
+
+    @media (min-width: $footer-bp) {
+        width: 11rem;
+
+        .wp-block-image img {
+            max-height: 1.2rem;
+        }
+    }
+}

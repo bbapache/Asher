@@ -1,0 +1,80 @@
+.page-studio {
+    .page-link-blocks {
+        overflow: hidden;
+        flex-wrap: wrap !important;
+
+        .wp-block-column {
+            margin: 0 !important;
+        }
+
+        #team {
+            order: 0;
+        }
+
+        #about {
+            order: 1;
+        }
+
+        #recognition {
+            order: 3;
+        }
+
+        #process {
+            order: 2;
+        }
+
+        .page-link-block {
+            height: 0;
+            padding-bottom: 50%;
+            background-color: var(--wp--preset--color--primary) !important;
+
+            .wp-block-media-text__media img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                object-fit: cover;  
+            }
+        }
+
+        .wp-block-media-text__content p {
+            text-indent: 5px;
+        }
+
+        @media (min-width: 800px){
+            #recognition {
+                order: 2;
+            }
+    
+            #process {
+                order: 3;
+            }
+
+            .page-link-block {
+                height: 100%;
+                padding-bottom: 0;
+            }
+
+            .wp-block-column {
+                height: 50%;
+
+                &:nth-of-type(1),
+                &:nth-of-type(4) {
+                    flex-basis: 58%;
+                }
+                &:nth-of-type(2),
+                &:nth-of-type(3) {
+                    flex-basis: 40%;
+                }
+            }
+        }
+
+        @media (min-width: $header-bp){
+            height: calc(var(--app-height) - $header-height-desktop - $footer-height-mobile - $spacingSmall);
+        }
+
+        @media (min-width: $min-tablet){
+            height: calc(var(--app-height) - $header-height-desktop - $footer-height-desktop - $spacing);
+        }
+    }
+}
