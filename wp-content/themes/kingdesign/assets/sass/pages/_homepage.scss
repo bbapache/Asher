@@ -138,6 +138,12 @@
             }
         }
 
+        .position-top {
+            img {
+                object-position: 50% 17%;
+            }
+        }
+
         // @media (max-width: $max-tablet) and (orientation: portrait) {
         //     .slick-slide[data-slick-index="0"] img {
         //         object-position: 79% 50% !important;
