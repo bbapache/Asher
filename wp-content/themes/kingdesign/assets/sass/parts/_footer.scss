@@ -1,6 +1,6 @@
 $footer-bp: 550px;
 $footer-height-desktop: 64px;
-$footer-height-mobile: 40px;
+$footer-height-mobile: 58px;
 
 :root {
     --footer-height: $footer-height-desktop;
@@ -55,6 +55,15 @@ $footer-height-mobile: 40px;
 
     .custom-logo {
         max-width: 3rem;
+    }
+
+    .copyright {
+        margin-top: 0.5rem;
+
+        @media (min-width: $footer-bp) {
+            margin-left: 2rem;
+            margin-top: 0;
+        }
     }
 
     .alignwide {
