@@ -1,6 +1,6 @@
 <?php
 
-define('THEME_VERSION', '0.79');
+define('THEME_VERSION', '0.80');
 
 /*
 =========================================
