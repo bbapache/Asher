@@ -1,6 +1,6 @@
 $footer-bp: 550px;
-$footer-height-desktop: 64px;
-$footer-height-mobile: 58px;
+$footer-height-desktop: 72px;
+$footer-height-mobile: 62px;
 
 :root {
     --footer-height: $footer-height-desktop;
@@ -13,6 +13,10 @@ $footer-height-mobile: 58px;
 
     a {
         text-decoration: none;
+    }
+
+    .alignfull {
+        width: 100%;
     }
 
     .up-arrow,
@@ -42,29 +46,18 @@ $footer-height-mobile: 58px;
     .up-arrow {
         transform: rotate(180deg);
         margin-right: 2rem;
+        z-index: 1;
 
         &.disabled {
             pointer-events: none;
             opacity: 0;
-            display: none;
+            //display: none;
         }
     }
 
     .back-arrow {
         margin-right: 0.75rem;
         transform: rotate(90deg);
-    }
-
-    .custom-logo {
-        max-width: 3rem;
-    }
-
-    .copyright {
-        margin-top: 0.5rem;
-
-        @media (min-width: $footer-bp) {
-            margin-top: 0;
-        }
     }
 
     .alignwide {
@@ -74,28 +67,34 @@ $footer-height-mobile: 58px;
     .wp-block-site-logo {
         margin: 0 0 0 auto;
         text-align: center;
-        width: 4rem;
-        height: 1.5rem;
 
         img {
-            width: 100%;
-            height: 100%;
+            width: 4rem;
+            height: auto;
             object-fit: contain;
         }
     }
 
-    .custom-logo {
-        max-width: 5rem;
-    }
+    // .custom-logo {
+    //     max-width: 5rem;
+    // }
 
-    .custom-logo-link {
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
+    // .custom-logo-link {
+    //     display: block;
+    //     width: 100%;
+    //     height: 100%;
+    // }
 
     .social-icons {
         display: none;
+    }
+
+    .footer-logo {
+        z-index: 0;
+    }
+
+    .wp-block-group:not(.footer-logo) {
+        z-index: 1;
     }
 
     @media (min-width: $min-tablet) {
@@ -115,12 +114,18 @@ $footer-height-mobile: 58px;
         }
 
         .wp-block-site-logo {
+            margin: 0 auto;
+            
+            img {
+                width: 5.5rem;
+            }
+        }
+
+        .footer-logo {
             position: absolute;
             left: 0;
             right: 0;
             margin: 0 auto;
-            width: 6.5rem;
-            height: 3rem;
         }
     }
 }
