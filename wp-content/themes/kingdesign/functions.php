@@ -3,29 +3,14 @@
 define('THEME_VERSION', '0.84');
 
 /*
-=========================================
-	Add Async & Defer to Scripts
-=========================================
-*/
-function add_async_forscript($url) {
-	if (strpos($url, '#asyncload')===false)
-		return $url;
-	else if (is_admin())
-		return str_replace('#asyncload', '', $url);
-	else
-		return str_replace('#asyncload', '', $url)."' async='async";
-}
-function add_defer_forscript( $url ) {
-	if ( strpos( $url, '#deferload' ) === false ){
-		return $url;
-	} elseif ( is_admin() ){
-		return str_replace( '#deferload', '', $url );
-	} else {
-		return trim( str_replace( '#deferload', '', $url ) ) . "' defer='defer";
-	}
-}
-add_filter('clean_url', 'add_async_forscript', 11, 1);
-add_filter('clean_url', 'add_defer_forscript', 11, 1);
+ =========================================
+ 	Script loading strategy
+ =========================================
+ 	Async/defer is handled by the $args parameter of wp_register_script() /
+ 	wp_enqueue_script() (WP 6.3+). The old '#deferload' clean_url filter no
+ 	longer works — modern WP escapes the script tag src, so the injected
+ 	attribute ended up inside the URL instead of on the tag.
+ */
 
 
 /*
@@ -35,21 +20,23 @@ add_filter('clean_url', 'add_defer_forscript', 11, 1);
  */
 
 function kingdesign_scripts() {
+	// Footer + defer. Execution order still follows dependency order.
+	$deferred = array( 'in_footer' => true, 'strategy' => 'defer' );
+
 	// global
     wp_enqueue_style( 'kingdesign-style', get_template_directory_uri() . '/assets/css/global.min.css?v=', array(), THEME_VERSION );
-    wp_enqueue_script( 'jQuery', "https://code.jquery.com/jquery-3.6.1.min.js#asyncload" , array(), '', true );
-	wp_enqueue_script( 'global', get_template_directory_uri() . '/assets/js/global.min.js#deferload' , array(), '', true );
+	wp_enqueue_script( 'global', get_template_directory_uri() . '/assets/js/global.min.js', array( 'jquery' ), THEME_VERSION, $deferred );
 
     // Page Specific
-	wp_register_script( 'slickMin', get_template_directory_uri() . '/assets/js/third-party/slickMin.js#deferload', array(), '', true );
-    wp_register_script( 'homepageSlick', get_template_directory_uri() . '/assets/js/pages/homepageSlick.js#deferload', array(), '', true );
-	wp_register_script( 'aboutResize', get_template_directory_uri() . '/assets/js/pages/aboutResize.js#deferload', array(), '', true );
-	wp_register_script( 'team', get_template_directory_uri() . '/assets/js/pages/team.js#deferload', array(), '', true );
-	wp_register_script( 'recognition', get_template_directory_uri() . '/assets/js/pages/recognition.js#deferload', array(), '', true );
-	wp_register_script( 'project', get_template_directory_uri() . '/assets/js/pages/project.js#deferload', array(), '', true );
-	wp_register_script( 'contact', get_template_directory_uri() . '/assets/js/pages/contact.js#deferload', array(), '', true );
-	wp_register_script( 'portfolio', get_template_directory_uri() . '/assets/js/pages/portfolio.js#deferload', array(), '', true );
-	wp_register_script( 'inProgress', get_template_directory_uri() . '/assets/js/pages/inProgress.js#deferload', array(), '', true );
+	wp_register_script( 'slickMin', get_template_directory_uri() . '/assets/js/third-party/slickMin.js', array( 'jquery' ), THEME_VERSION, $deferred );
+    wp_register_script( 'homepageSlick', get_template_directory_uri() . '/assets/js/pages/homepageSlick.js', array( 'slickMin' ), THEME_VERSION, $deferred );
+	wp_register_script( 'aboutResize', get_template_directory_uri() . '/assets/js/pages/aboutResize.js', array(), THEME_VERSION, $deferred );
+	wp_register_script( 'team', get_template_directory_uri() . '/assets/js/pages/team.js', array( 'jquery' ), THEME_VERSION, $deferred );
+	wp_register_script( 'recognition', get_template_directory_uri() . '/assets/js/pages/recognition.js', array( 'slickMin' ), THEME_VERSION, $deferred );
+	wp_register_script( 'project', get_template_directory_uri() . '/assets/js/pages/project.js', array( 'jquery' ), THEME_VERSION, $deferred );
+	wp_register_script( 'contact', get_template_directory_uri() . '/assets/js/pages/contact.js', array( 'jquery' ), THEME_VERSION, $deferred );
+	wp_register_script( 'portfolio', get_template_directory_uri() . '/assets/js/pages/portfolio.js', array( 'jquery' ), THEME_VERSION, $deferred );
+	wp_register_script( 'inProgress', get_template_directory_uri() . '/assets/js/pages/inProgress.js', array( 'jquery' ), THEME_VERSION, $deferred );
 
 	function viewportHeight(){
 		?>
@@ -217,7 +204,7 @@ function kingdesign_scripts() {
 
 	if ( is_page('portfolio') || is_page('portfolio-2') ) {
 		wp_enqueue_script( 'portfolio' );
-		wp_enqueue_script('custom-lazy-load', get_template_directory_uri() . '/assets/js/third-party/custom-lazy-load.js', array(), '1.0', true);
+		wp_enqueue_script('custom-lazy-load', get_template_directory_uri() . '/assets/js/third-party/custom-lazy-load.js', array(), '1.0', $deferred);
 	}
 
 	if ( is_page('in-progress') ) {
@@ -228,7 +215,7 @@ function kingdesign_scripts() {
 		add_action('wp_footer', 'contactForm');
 	}
 
-	wp_enqueue_script( 'instantPage', "https://instant.page/5.1.1#deferload", array(), '', true );
+	wp_enqueue_script( 'instantPage', 'https://instant.page/5.1.1', array(), null, $deferred );
 }
 add_action( 'wp_enqueue_scripts', 'kingdesign_scripts' );
 
