@@ -7,21 +7,21 @@ function hide_team() {
     }
 }
 
-jQuery(document).ready(function(e){
-    var icon = $('<img decoding="async" alt="Plus icon" class="plus-icon" src="https://asherslaunwhit.wpengine.com/wp-content/uploads/2022/12/plus-icon-white.svg">');
-    $('.single-projects .project-gallery .wp-block-image a').append(icon);
+jQuery(document).ready(function(){
+    var icon = jQuery('<img decoding="async" alt="Plus icon" class="plus-icon" src="https://asherslaunwhit.wpengine.com/wp-content/uploads/2022/12/plus-icon-white.svg">');
+    jQuery('.single-projects .project-gallery .wp-block-image a').append(icon);
 
-    $('.team-title').click((e)=>{
-        $(this).find('.list-wrapper').toggleClass('show');
+    jQuery('.team-title').click(function(e){
+        jQuery(this).next('.list-wrapper').toggleClass('show');
         e.stopPropagation();
     });
 
-    $('.project-gallery .wp-block-column').each(function() {
-        var flexBasis = $(this).css("flex-basis");
+    jQuery('.project-gallery .wp-block-column').each(function() {
+        var flexBasis = jQuery(this).css("flex-basis");
         if (flexBasis == '50%' || flexBasis == '100%') {
-            $(this).addClass('wide');
+            jQuery(this).addClass('wide');
         } else {
-            $(this).addClass('skinny');
+            jQuery(this).addClass('skinny');
         }
     });
 });
