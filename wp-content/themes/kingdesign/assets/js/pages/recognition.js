@@ -60,8 +60,8 @@ jQuery(document).ready(function(){
     });
 
     // plus sign click
-    $(document).on('click', '.slick-slide .wp-block-media-text__content', (e)=>{
-      var href = $(e.target).closest('.slick-slide').find('a').attr('href');
+    jQuery(document).on('click', '.slick-slide .wp-block-media-text__content', (e)=>{
+      var href = jQuery(e.target).closest('.slick-slide').find('a').attr('href');
       window.open(href);
       return false;
     });
